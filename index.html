@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowel Checker</title>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 24px;
+        }
+
+        /* Input and Button styling */
+        #inputText {
+            padding: 10px;
+            font-size: 16px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Div styling for results */
+        #vowelDiv, #noVowelDiv {
+            width: 80%;
+            max-width: 400px;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #vowelDiv {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        #noVowelDiv {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+
+        /* Styling for result text */
+        #vowelResult, #noVowelResult {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h2>Check for Vowel Words</h2>
+
+    <!-- Input aur button -->
+    <input type="text" id="inputText" placeholder="Type something...">
+    <button onclick="checkVowels()">Check</button>
+
+    <!-- Divs to display results -->
+    <div id="vowelDiv">
+        <h3>In this word using vowel words:</h3>
+        <p id="vowelResult"></p>
+    </div>
+    
+    <div id="noVowelDiv">
+        <h3>In this word no vowel:</h3>
+        <p id="noVowelResult"></p>
+    </div>
+
+    <script>
+        function checkVowels() {
+            const inputText = document.getElementById("inputText").value.trim();
+            const vowelDiv = document.getElementById("vowelResult");
+            const noVowelDiv = document.getElementById("noVowelResult");
+
+            if (inputText === "") return; // Agar input blank hai to kuch na karay
+
+            if (/[aeiouAEIOU]/.test(inputText)) {
+                // Agar input mein vowel ho, to vowel div mein add kare
+                vowelDiv.textContent += inputText + ", ";
+            } else {
+                // Agar vowel na ho, to no vowel div mein add kare
+                noVowelDiv.textContent += inputText + ", ";
+            }
+
+            document.getElementById("inputText").value = ""; // Input clear karay
+        }
+    </script>
+</body>
+</html>
