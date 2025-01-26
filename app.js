@@ -1,21 +1,18 @@
 
-    function  checkChar() {
+function checkVowels() {
+  const inputText = document.getElementById("inputText").value.trim();
+  const vowelDiv = document.getElementById("vowelResult");
+  const noVowelDiv = document.getElementById("noVowelResult");
 
-var input = document.getElementById("charInput").value;
+  if (inputText === "") return; // Agar input blank hai to kuch na karay
 
-if  (input === "a" ||
-     input === "e" || 
-     input === "i" || 
-     input === "o" || 
-     input === "u" ||
-     input === "A" ||
-     input === "E" || 
-     input === "I" || 
-     input === "O" || 
-     input === "U" 
-     ) {
-      document.getElementById("result").innerHTML = "Given character is a vowel";
-}else{
-  document.getElementById("result2").innerHTML = "Given character is not a vowel";
-}
+  if (/[aeiouAEIOU]/.test(inputText)) {
+    // Agar input mein vowel ho, to vowel div mein add kare
+    vowelDiv.textContent += inputText + ", ";
+  } else {
+    // Agar vowel na ho, to no vowel div mein add kare
+    noVowelDiv.textContent += inputText + ", ";
+  }
+
+  document.getElementById("inputText").value = ""; // Input clear karay
 }
